@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_start"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00ce0a"
+        android:gravity="center"
+        android:text="go!"
+        android:textAllCaps="true"
+        android:textSize="50sp"
+        android:onClick="play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_time"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:text="30s"
+        android:textSize="30sp"
+        android:background="#edc500"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/txt_task"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="2 + 4"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/txt_triesNrounds"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:text="0/0"
+        android:textSize="30sp"
+        android:background="#00cfef"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/grid_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="invisible"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.308"
+        app:rowCount="2">
+
+        <TextView
+            android:layout_height="100dp"
+            android:background="#ff0a0a"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="#000000"
+            android:textSize="70sp"
+            android:tag="1"
+            app:layout_columnWeight="1" />
+
+        <TextView
+            android:layout_height="100dp"
+            android:background="#c4006b"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="#000000"
+            android:textSize="70sp"
+            android:tag="2"
+            app:layout_columnWeight="1" />
+
+        <TextView
+            android:layout_height="100dp"
+            android:background="#00c42a"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="#000000"
+            android:textSize="70sp"
+            android:tag="3"
+            app:layout_columnWeight="1" />
+
+        <TextView
+            android:layout_height="100dp"
+            android:background="#ffe100"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="#000000"
+            android:textSize="70sp"
+            android:tag="4"
+            app:layout_columnWeight="1" />
+
+    </android.support.v7.widget.GridLayout>
+
+</android.support.constraint.ConstraintLayout>
