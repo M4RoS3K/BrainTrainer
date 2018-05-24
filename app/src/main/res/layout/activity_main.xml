@@ -6,151 +6,173 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txt_start"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#00ce0a"
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00ce0a"
         android:gravity="center"
+        android:onClick="start"
+        android:padding="40dp"
         android:text="go!"
         android:textAllCaps="true"
-        android:textSize="50sp"
-        android:onClick="play"
+        android:textSize="60sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_time"
-        android:layout_width="55dp"
-        android:layout_height="50dp"
-        android:text="30s"
-        android:textSize="30sp"
-        android:background="#edc500"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <TextView
-        android:id="@+id/txt_task"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="2 + 4"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <TextView
-        android:id="@+id/txt_triesNrounds"
-        android:layout_width="55dp"
-        android:layout_height="50dp"
-        android:text="0/0"
-        android:textSize="30sp"
-        android:background="#00cfef"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/grid_results"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_game"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:visibility="invisible"
-        app:columnCount="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308"
-        app:rowCount="2">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <Button
+            android:id="@+id/btn_playAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:onClick="start"
+            android:text="play again"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_output" />
 
         <TextView
-            android:layout_height="100dp"
-            android:background="#ff0a0a"
+            android:id="@+id/txt_output"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
             android:gravity="center"
-            android:text="10"
-            android:textColor="#000000"
-            android:textSize="70sp"
-            android:tag="1"
-            app:layout_columnWeight="1" />
+            android:text="Correct!"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.726" />
 
         <TextView
-            android:layout_height="100dp"
-            android:background="#c4006b"
-            android:gravity="center"
-            android:text="10"
-            android:textColor="#000000"
-            android:textSize="70sp"
-            android:tag="2"
-            app:layout_columnWeight="1" />
+            android:id="@+id/txt_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#edc500"
+            android:padding="10dp"
+            android:text="30s"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
 
         <TextView
-            android:layout_height="100dp"
-            android:background="#00c42a"
-            android:gravity="center"
-            android:text="10"
-            android:textColor="#000000"
-            android:textSize="70sp"
-            android:tag="3"
-            app:layout_columnWeight="1" />
+            android:id="@+id/txt_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00cfef"
+            android:padding="10dp"
+            android:text="0/0"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
 
         <TextView
-            android:layout_height="100dp"
-            android:background="#ffe100"
-            android:gravity="center"
-            android:text="10"
-            android:textColor="#000000"
-            android:textSize="70sp"
-            android:tag="4"
-            app:layout_columnWeight="1" />
+            android:id="@+id/txt_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:padding="15dp"
+            android:text="2 + 4"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_score"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.036" />
 
-    </android.support.v7.widget.GridLayout>
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/grid_answers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:columnCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.357"
+            app:rowCount="2">
 
-    <TextView
-        android:id="@+id/txt_output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Correct!"
-        android:textSize="50sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+            <Button
+                android:id="@+id/grid_btn_0"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center"
+                android:onClick="chooseAnswer"
+                android:tag="0"
+                android:text="14"
+                android:textColor="#000000"
+                android:textSize="80sp"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+                app:layout_rowWeight="1" />
 
-    <Button
-        android:id="@+id/btn_playAgain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="play again"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
+            <Button
+                android:id="@+id/grid_btn_1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:onClick="chooseAnswer"
+                android:tag="1"
+                android:text="14"
+                android:textColor="#000000"
+                android:textSize="80sp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+                app:layout_rowWeight="1" />
+
+            <Button
+                android:id="@+id/grid_btn_2"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:onClick="chooseAnswer"
+                android:tag="2"
+                android:text="14"
+                android:textColor="#000000"
+                android:textSize="80sp"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="1"
+                app:layout_rowWeight="1" />
+
+            <Button
+                android:id="@+id/grid_btn_3"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:onClick="chooseAnswer"
+                android:tag="3"
+                android:text="14"
+                android:textColor="#000000"
+                android:textSize="80sp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="1"
+                app:layout_rowWeight="1" />
+
+        </android.support.v7.widget.GridLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
