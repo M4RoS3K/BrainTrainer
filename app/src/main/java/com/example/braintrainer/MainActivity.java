@@ -14,104 +14,96 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Button start;
-    Button btn_grid_0;
-    Button btn_grid_1;
-    Button btn_grid_2;
-    Button btn_grid_3;
-    TextView timer;
+    Button grid_btn_0;
+    Button grid_btn_1;
+    Button grid_btn_2;
+    Button grid_btn_3;
+    Button playAgain;
+    TextView message;
     TextView sum;
     TextView score;
-    TextView output;
-    Button playAgain;
-    android.support.v7.widget.GridLayout grid_results;
+    TextView timer;
     ConstraintLayout layoutGame;
     ArrayList<Integer> answers = new ArrayList<Integer>();
-    boolean isGameActive = false;
     int locationOfCorrectAnswer;
-    int corrects = 0;
     int tries = 0;
+    int corrects = 0;
+    boolean isGameActive = false;
 
     public void start(View view){
         start.setVisibility(View.INVISIBLE);
         playAgain.setVisibility(View.INVISIBLE);
-        output.setVisibility(View.INVISIBLE);
         layoutGame.setVisibility(View.VISIBLE);
-
-        corrects = 0;
-        tries = 0;
-        score.setText("0/0");
-
+        message.setText("");
         isGameActive = true;
+        score.setText("0/0");
+        tries = 0;
+        corrects = 0;
 
-        newRound();
-
-        new CountDownTimer(30000 + 100, 1000){
+        new CountDownTimer(30100, 1000){
             @Override
-            public void onTick(long millisUntilFinished) {
-                timer.setText(String.valueOf(millisUntilFinished / 1000) + "s");
+            public void onTick(long milisLeft){
+                timer.setText(Integer.toString((int) milisLeft / 1000) + "s");
             }
 
             @Override
             public void onFinish(){
                 isGameActive = false;
+                message.setText("Done!");
                 timer.setText("0s");
                 playAgain.setVisibility(View.VISIBLE);
-                output.setText("Done!");
-                output.setVisibility(View.VISIBLE);
             }
         }.start();
     }
 
-    public void chooseAnswer(View view){
-        if(isGameActive) {
-            if (locationOfCorrectAnswer == Integer.parseInt(view.getTag().toString())){
-                output.setText("Correct");
+    public void checkAnswer(View view) {
+        if (isGameActive) {
+            if (locationOfCorrectAnswer == Integer.parseInt(view.getTag().toString())) {
+                message.setText("Correct");
                 corrects++;
             } else {
-                output.setText("Wrong :(");
+                message.setText("Wrong");
             }
+
             tries++;
             score.setText(Integer.toString(corrects) + "/" + Integer.toString(tries));
-            score.setVisibility(View.VISIBLE);
-            output.setVisibility(View.VISIBLE);
             newRound();
         }
     }
 
     private void newRound(){
-        int a = generateNumber(21);
-        int b = generateNumber(21);
+        int a = genNum(21);
+        int b = genNum(21);
 
-        sum.setText(Integer.toString(a) + " + " + Integer.toString(b));
+        sum.setText(String.valueOf(a) + " + " + String.valueOf(b));
 
-        locationOfCorrectAnswer = generateNumber(4);
+        locationOfCorrectAnswer = genNum(4);
 
         answers.clear();
 
         for(int i = 0; i < 4; i++){
-            if(i == locationOfCorrectAnswer) {
-                answers.add(a+b);
+            if(i == locationOfCorrectAnswer){
+                answers.add(a + b);
             } else {
-                int wrongAnswer = generateNumber(41);
+                int wrongPosition = genNum(41);
 
-                // if the random number is the same as a+b, generate new random number
-                while(wrongAnswer == a+b){
-                    wrongAnswer = generateNumber(41);
+                while(wrongPosition == a + b){
+                    wrongPosition = genNum(4);
                 }
 
-                answers.add(wrongAnswer);
+                answers.add(wrongPosition);
             }
         }
 
-        btn_grid_0.setText(Integer.toString(answers.get(0)));
-        btn_grid_1.setText(Integer.toString(answers.get(1)));
-        btn_grid_2.setText(Integer.toString(answers.get(2)));
-        btn_grid_3.setText(Integer.toString(answers.get(3)));
+        grid_btn_0.setText(Integer.toString(answers.get(0)));
+        grid_btn_1.setText(Integer.toString(answers.get(1)));
+        grid_btn_2.setText(Integer.toString(answers.get(2)));
+        grid_btn_3.setText(Integer.toString(answers.get(3)));
     }
 
-    private int generateNumber(int max){
-        Random num = new Random();
-        return num.nextInt(max);
+    private int genNum(int max){
+        Random rand = new Random();
+        return rand.nextInt(max);
     }
 
     @Override
@@ -119,17 +111,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        start = (Button) findViewById(R.id.btn_start);
-        btn_grid_0 = (Button) findViewById(R.id.grid_btn_0);
-        btn_grid_1 = (Button) findViewById(R.id.grid_btn_1);
-        btn_grid_2 = (Button) findViewById(R.id.grid_btn_2);
-        btn_grid_3 = (Button) findViewById(R.id.grid_btn_3);
-        timer = (TextView) findViewById(R.id.txt_timer);
+        start = (Button) findViewById(R.id.btn_go);
+        layoutGame = (ConstraintLayout) findViewById(R.id.layout_game);
+        grid_btn_0 = (Button) findViewById(R.id.grid_btn_0);
+        grid_btn_1 = (Button) findViewById(R.id.grid_btn_1);
+        grid_btn_2 = (Button) findViewById(R.id.grid_btn_2);
+        grid_btn_3 = (Button) findViewById(R.id.grid_btn_3);
+        message = (TextView) findViewById(R.id.txt_message);
         sum = (TextView) findViewById(R.id.txt_sum);
         score = (TextView) findViewById(R.id.txt_score);
-        grid_results = (android.support.v7.widget.GridLayout) findViewById(R.id.grid_answers);
-        output = (TextView) findViewById(R.id.txt_output);
+        timer = (TextView) findViewById(R.id.txt_timer);
         playAgain = (Button) findViewById(R.id.btn_playAgain);
-        layoutGame = (ConstraintLayout) findViewById(R.id.layout_game);
+
+        newRound();
     }
 }

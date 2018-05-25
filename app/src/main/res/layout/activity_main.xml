@@ -2,86 +2,47 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#00ce0a"
-        android:gravity="center"
-        android:onClick="start"
-        android:padding="40dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:padding="20dp"
         android:text="go!"
-        android:textAllCaps="true"
-        android:textSize="60sp"
-        android:visibility="visible"
+        android:textSize="80sp"
+        android:onClick="start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_game"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible">
-
-        <Button
-            android:id="@+id/btn_playAgain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:onClick="start"
-            android:text="play again"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_output" />
-
-        <TextView
-            android:id="@+id/txt_output"
-            android:layout_width="wrap_content"
-            android:layout_height="68dp"
-            android:gravity="center"
-            android:text="Correct!"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.726" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txt_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#edc500"
-            android:padding="10dp"
+            android:background="@android:color/holo_orange_light"
+            android:padding="5dp"
             android:text="30s"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
-
-        <TextView
-            android:id="@+id/txt_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00cfef"
-            android:padding="10dp"
-            android:text="0/0"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.03" />
 
@@ -91,40 +52,52 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:padding="15dp"
-            android:text="2 + 4"
-            android:textSize="30sp"
+            android:padding="5dp"
+            android:text="30 + 11"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txt_score"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.036" />
+            app:layout_constraintVertical_bias="0.057" />
+
+        <TextView
+            android:id="@+id/txt_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:padding="5dp"
+            android:text="0/0"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
 
         <android.support.v7.widget.GridLayout
-            android:id="@+id/grid_answers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             app:columnCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.357"
+            app:layout_constraintVertical_bias="0.329"
             app:rowCount="2">
 
             <Button
                 android:id="@+id/grid_btn_0"
-                android:background="@android:color/holo_red_light"
+                android:background="@android:color/holo_red_dark"
                 android:gravity="center"
-                android:onClick="chooseAnswer"
+                android:onClick="checkAnswer"
                 android:tag="0"
                 android:text="14"
-                android:textColor="#000000"
-                android:textSize="80sp"
+                android:textSize="70sp"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
                 app:layout_row="0"
@@ -134,11 +107,10 @@
                 android:id="@+id/grid_btn_1"
                 android:background="@android:color/holo_purple"
                 android:gravity="center"
-                android:onClick="chooseAnswer"
+                android:onClick="checkAnswer"
                 android:tag="1"
                 android:text="14"
-                android:textColor="#000000"
-                android:textSize="80sp"
+                android:textSize="70sp"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
                 app:layout_row="0"
@@ -146,13 +118,12 @@
 
             <Button
                 android:id="@+id/grid_btn_2"
-                android:background="@android:color/holo_blue_light"
+                android:background="@android:color/holo_green_light"
                 android:gravity="center"
-                android:onClick="chooseAnswer"
+                android:onClick="checkAnswer"
                 android:tag="2"
                 android:text="14"
-                android:textColor="#000000"
-                android:textSize="80sp"
+                android:textSize="70sp"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
                 app:layout_row="1"
@@ -160,19 +131,46 @@
 
             <Button
                 android:id="@+id/grid_btn_3"
-                android:background="@android:color/holo_green_light"
+                android:background="@android:color/holo_blue_bright"
                 android:gravity="center"
-                android:onClick="chooseAnswer"
+                android:onClick="checkAnswer"
                 android:tag="3"
                 android:text="14"
-                android:textColor="#000000"
-                android:textSize="80sp"
+                android:textSize="70sp"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
                 app:layout_row="1"
                 app:layout_rowWeight="1" />
 
         </android.support.v7.widget.GridLayout>
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Correct"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741" />
+
+        <Button
+            android:id="@+id/btn_playAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play again"
+            android:visibility="invisible"
+            android:onClick="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.898" />
+
     </android.support.constraint.ConstraintLayout>
+
 
 </android.support.constraint.ConstraintLayout>
